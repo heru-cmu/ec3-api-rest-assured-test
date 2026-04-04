@@ -82,7 +82,7 @@ schema.required.each { req ->
     assert jsonResponse[req] != null : &quot;Field '${req}' wajib ada tapi null&quot;
 }
 
-println(&quot;✅ POST User response valid sesuai schema (strict)&quot;)
+println(&quot;✅ POST User response valid sesuai schema&quot;)
 </verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>

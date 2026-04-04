@@ -6,11 +6,12 @@
    <UUID>d76311f7-e5a1-4fd7-a5c4-2d1a95cd673b</UUID>
    <createdEdition>ENTERPRISE</createdEdition>
    <createdVersion>11.0.1</createdVersion>
-   <freeLicense>false</freeLicense>
+   <freeLicense>true</freeLicense>
    <migratedVersion>5.9.0</migratedVersion>
    <modifiedEdition>ENTERPRISE</modifiedEdition>
    <modifiedVersion>11.0.1</modifiedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
+   <projectFileLocation>C:\Users\Adrian Fajar\Katalon Studio\EC3-api-testing\EC3-api-testing.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>

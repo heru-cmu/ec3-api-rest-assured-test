@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Precondition: API Petstore aktif, endpoint /user tersedia</description>
+   <name>POST User (Positif)</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ecbe41e6-33ab-48b7-97e8-d3f8b1487347</testCaseGuid>
+</TestCaseEntity>

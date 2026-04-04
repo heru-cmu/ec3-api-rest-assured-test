@@ -12,58 +12,39 @@ Project ini berisi automation testing untuk **Petstore API** menggunakan **Katal
   - Toleran → menerima variasi tipe numeric (`Integer` vs `Long`)
   - Strict → validasi persis sesuai schema
 - **Schema JSON** → disimpan di folder `Include/resources/schema/`
+
 ## 📂 Verification & Assertion
+... (bagian verifikasi yang sudah ada tetap)
 
-### ✅ GET User
-- Status Code → 200  
-- Field Validation (Strict):  
-  - `id` → Long  
-  - `username` → String  
-  - `firstName` → String  
-  - `lastName` → String  
-  - `email` → String  
-  - `password` → String  
-  - `phone` → String  
-  - `userStatus` → Integer  
-- Required Fields → `id`, `username`, `email`
+## 📂 Test Cases
+- **Positif**
+  - POST User (Positif)
+  - PUT User (Positif)
+  - GET User (Positif)
+  - DELETE User (Positif)
+- **Multi Negatif**
+  - POST User (Multi Negatif)
+  - PUT User (Multi Negatif)
+  - GET User (Multi Negatif)
+  - DELETE User (Multi Negatif)
 
-### ✅ POST User
-- Status Code → 200  
-- Field Validation (Strict):  
-  - `code` → Integer  
-  - `type` → String  
-  - `message` → String  
-- Required Fields → `code`, `type`, `message`
+Setiap test case negatif menggunakan looping untuk menjalankan beberapa variasi input invalid sekaligus, lalu menampilkan **summary hasil** (BUG vs OK).
 
-### ✅ PUT User
-- Status Code → 200  
-- Field Validation:  
-  - Toleran → `code` bisa Integer/Long  
-  - Strict → `code` harus Integer  
-  - `type` → String  
-  - `message` → String  
-- Required Fields → `code`, `type`, `message`
+## 📂 Test Suite
+- **Run Test Suite CRUD Flow API - User (POST-PUT-GET-DELETE)**
+  - Menjalankan semua test case CRUD secara berurutan:
+    1. POST User (Positif)
+    2. POST User (Multi Negatif)
+    3. PUT User (Positif)
+    4. PUT User (Multi Negatif)
+    5. GET User (Positif)
+    6. GET User (Multi Negatif)
+    7. DELETE User (Positif)
+    8. DELETE User (Multi Negatif)
+  - Positif menggunakan `STOP_ON_FAILURE` (berhenti jika gagal).
+  - Multi Negatif menggunakan `CONTINUE_ON_FAILURE` (tetap lanjut walau ada error).
 
-### ✅ DELETE User
-- Status Code → 200  
-- Field Validation (Strict):  
-  - `code` → Integer  
-  - `type` → String  
-  - `message` → String (username yang dihapus)  
-- Required Fields → `code`, `type`, `message`
-
-### 📌 Assertion Patterns
-```groovy
-// Status Code
-WS.verifyResponseStatusCode(response, 200)
-assertThat(response.getStatusCode()).isEqualTo(200)
-
-// Field Type
-assert jsonResponse.id instanceof Long
-assert jsonResponse.userStatus instanceof Integer
-assert jsonResponse.username instanceof String
-
-// Required Field
-assert jsonResponse['id'] != null
-assert jsonResponse['username'] != null
-assert jsonResponse['email'] != null
+## 📂 Reporting
+- Hasil eksekusi Test Suite otomatis tersimpan di folder `Reports/`.
+- Log menampilkan detail request (HAR + cURL) dan hasil assertion.
+- Summary di akhir setiap test case negatif memudahkan identifikasi skenario yang diterima/ditolak API.
