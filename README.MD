@@ -2,6 +2,16 @@
 
 Project ini berisi automation testing untuk **Petstore API** menggunakan **Katalon Studio**. Fokus pada CRUD User endpoints dengan verifikasi schema JSON (toleran & strict).
 
+## 🤔 Reflection Questions
+- Awalnya saya kelupaan untuk membuat **Test Cases**, karena disangka cukup dengan membuat **Object Repository** dan mengubah JSON request body.  
+  → Pelajaran: Object Repository hanya menyimpan endpoint & request, tapi eksekusi + verifikasi harus ada di Test Case.  
+
+- Saya kemudian memikirkan bagaimana dalam **1 Test Case Negatif** bisa terdapat banyak variasi input invalid agar lebih efisien, sehingga tidak perlu membuat terlalu banyak Test Case di Katalon.  
+  → Pelajaran: Looping skenario negatif dalam satu Test Case lebih hemat, dan bisa ditutup dengan **summary hasil** (BUG vs OK).  
+
+- Dengan pendekatan ini, struktur project jadi lebih rapi: **Positif** dipisah, **Multi Negatif** dikumpulkan, lalu dijalankan berurutan lewat Test Suite CRUD.  
+  → Pelajaran: Pisah Positif & Negatif membuat hasil lebih jelas, dan Test Suite bisa mengatur flow end-to-end.
+
 ## 📂 Fitur Utama
 - **CRUD User Endpoints**
   - `POST /user` → Create User
